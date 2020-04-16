@@ -9,27 +9,28 @@ Ejercicio para clase de IA
 
 ### Ejemplos:
 
-* cuando n = 1, m = 2
+* cuando n = 1, m = 2:
 abbcccc
 
-* cuando n = 2, m = 3
+* cuando n = 2, m = 3:
 aabbbccccccc
 
-* cuando n = 3, m = 4
+* cuando n = 3, m = 4:
 aaabbbbcccccccccc
 
-* cuando n = 2, m = 5
-aabbbbbccccccccccccccc
+* cuando n = 2, m = 5:
+aabbbbbccccccccc
 
 ## Patrones en cadenas
 
 * siempre están en el orden a, b ,c
 * b siempre es mayor que a
 * c siempre es mayor que a y b
+* c sería dos veces a,  mas  numero de veces b
 
 G = {Σ, V, P, S}
 
 Σ = {a, b, c}
-V = {S, T}
+V = {S, T, U}
 
-P = {}
+P = {(1)S->aTU; (2)T->bT; (3)T->b; (3)}
