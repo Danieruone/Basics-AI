@@ -31,6 +31,15 @@ aabbbbbccccccccc
 G = {Σ, V, P, S}
 
 Σ = {a, b, c}
-V = {S, T, U}
+V = {S, W, T, U}
 
-P = {(1)S->aTU; (2)T->bT; (3)T->b; (3)}
+P = {(1)S->WTU; (2)W->a; (3)W->aW; (4)T->b; (5)T->bT; (6)U->c; (7)U-cU}
+
+abbcccc:    (1)WTU
+            (2)aTU
+            (5)abTU
+            (4)abbU
+            (7)abbcU
+            (7)abbccU
+            (7)abbcccU
+            (6)abbcccc
