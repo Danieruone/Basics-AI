@@ -1,9 +1,10 @@
-# Automata
+# Autómata
 Ejercicio para clase de IA
 
 ## Lenguaje
 ![Lenguaje a definir para gramática](Images/Lenguaje.PNG)
 
+* Alfabeto: {a, b, c}
 * n es menor que m
 * n y m son mayores a 0
 
@@ -43,3 +44,12 @@ abbcccc:    (1)WTU
             (7)abbccU
             (7)abbcccU
             (6)abbcccc
+
+# Pruebas
+1. Instalar dependencias:
+
+`` $ npm install ``
+
+2. Correr test
+
+`` $ npm run test ``
