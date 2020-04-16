@@ -1,0 +1,23 @@
+{
+  "name": "Automata",
+  "version": "1.0.0",
+  "description": "Ejercicio para clase de IA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danieruone/Automata.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danieruone/Automata/issues"
+  },
+  "homepage": "https://github.com/Danieruone/Automata#readme",
+  "dependencies": {
+    "jest": "^25.3.0"
+  }
+}
