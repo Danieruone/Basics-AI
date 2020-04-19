@@ -9,8 +9,10 @@ function genString(n, string, array){
 
 
 const stringGen = (n, m) => {
-    if(n > m) throw new Error('n no puede ser mayor que m.') 
-    if(n === m) throw new Error('n y m no pueden ser iguales.') 
+    if(n < 0 || m < 0) throw new Error('ningún valor puede ser menor que cero.')
+    if(n > m) throw new Error('n no puede ser mayor que m.')
+    if(n === m) throw new Error('n y m no pueden ser iguales.')
+    
     let array = []
     const E = ['a', 'b', 'c']
     genString(n, E[0], array)
