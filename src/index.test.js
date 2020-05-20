@@ -1,5 +1,5 @@
-const stringGen = require('./generator')
-const validateString = require('./validator')
+const stringGen = require('./Generador de cadenas/generator')
+const validateString = require('./Generador de cadenas/validator')
 
 // Generation
 

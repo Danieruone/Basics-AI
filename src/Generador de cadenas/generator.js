@@ -7,7 +7,6 @@ function genString(n, string, array){
     genString(n-1, string, array)
 }
 
-
 const stringGen = (n, m) => {
     if(n < 0 || m < 0) throw new Error('ningún valor puede ser menor que cero.')
     if(n > m) throw new Error('n no puede ser mayor que m.')
