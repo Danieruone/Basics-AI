@@ -4,7 +4,7 @@
 * Q = {q0, q1, q2}
 * E = {a,b}
 
-![Diagrama de estados](Images/estados.PNG)
+![Diagrama de estados](Images/estados.png)
 
 ## Ejemplo de secuencia
 1. ab
