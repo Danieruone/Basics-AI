@@ -18,6 +18,7 @@ const machine = {
               return;
             }
             arr.push("a");
+            console.log(arr)
             generarate(i + 1);
           }
           generarate();
@@ -35,6 +36,7 @@ const machine = {
               return;
             }
             arr.push("b");
+            console.log(arr)
             generarate(i + 1);
           }
           generarate();
