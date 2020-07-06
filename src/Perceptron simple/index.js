@@ -14,14 +14,24 @@ button.addEventListener("click", () => {
 
   const iterationData = startIterations(input, userExpectedResult);
   swal("Estado neurona", "la neurona ha aprendido!");
-  
+
   // mostrando data
+
+  const data =
+    iterationData.iteratedWeight
+      .map(
+        (value) => `
+    <li class="list-group-item">${JSON.stringify(value)}</li>
+  `
+      )
+      .join("") || "na";
+
   tr.innerHTML = `
-    <td>${iterationData.frase}</td>
-    <td>${iterationData.entradas}</td>
-    <td>${iterationData.pesos}</td>
-    <td>${iterationData.pesosIterados}</td>
-    <td>${iterationData.respuesta}</td>`;
+    <td>${iterationData.inputUser}</td>
+    <td>${iterationData.inputs}</td>
+    <td>${iterationData.weight}</td>
+    <td><ul class="list-group">${data}</ul></td>
+    <td>${iterationData.response}</td>`;
 
   dataTable.appendChild(tr);
 });

@@ -1,4 +1,4 @@
-import data from "./data.js"
+import data from "./data.js";
 import Neuron from "./neuron.js";
 
 function startIterations(input, expectedResult) {
@@ -18,15 +18,15 @@ function startIterations(input, expectedResult) {
   console.log("Frase: ", input);
   console.log("Entradas: ", neuronInputs);
   console.log("Pesos sinápticos: ", synapticWeights);
-  const iterationData =  Neuron(neuronInputs, synapticWeights, expectedResult);
+  const iterationData = Neuron(neuronInputs, synapticWeights, expectedResult);
 
   return {
-    frase: input,
-    entradas: neuronInputs,
-    pesos: synapticWeights,
-    pesosIterados: iterationData.array,
-    respuesta: iterationData.response
-  }
+    inputUser: input,
+    inputs: neuronInputs,
+    weight: synapticWeights,
+    iteratedWeight: iterationData.array,
+    response: iterationData.response,
+  };
 }
 
 export default startIterations;

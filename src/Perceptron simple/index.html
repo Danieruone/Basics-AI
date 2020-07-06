@@ -18,19 +18,19 @@
         <div class="column mx-auto mt-5">
           <form>
             <div class="form-group">
-              <label>Introduce tu frase:</label>
+              <label>Introduce la frase:</label>
               <input
                 type="text"
                 class="form-control"
                 id="userInput"
                 placeholder="Introduce tu frase"
               />
-              <label>Introduce resultado esperado de la neurona:</label>
+              <label>Introduce salida esperada de la neurona:</label>
               <input
                 type="text"
                 class="form-control"
                 id="expectedResult"
-                placeholder="1, 0, -1"
+                placeholder="1, -1"
               />
             </div>
             <button type="button" class="btn btn-primary" id="btn">
@@ -51,8 +51,7 @@
                 <th scope="col">Resultado de la frase</th>
               </tr>
             </thead>
-            <tbody id="dataTable">
-            </tbody>
+            <tbody id="dataTable"></tbody>
           </table>
         </div>
       </div>
