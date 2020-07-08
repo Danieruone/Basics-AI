@@ -11,27 +11,29 @@ button.addEventListener("click", () => {
   const tr = document.createElement("tr");
   const input = userInput.value;
   const userExpectedResult = parseInt(expectedResult.value);
+  if (userExpectedResult == 1 || userExpectedResult == -1) {
+    const iterationData = startIterations(input, userExpectedResult);
+    swal("Estado neurona", "la neurona ha aprendido!", "success");
 
-  const iterationData = startIterations(input, userExpectedResult);
-  swal("Estado neurona", "la neurona ha aprendido!");
+    // mostrando data
+    const data =
+      iterationData.iteratedWeight
+        .map(
+          (value) => `
+      <li class="list-group-item">${JSON.stringify(value)}</li>
+    `
+        )
+        .join("") || "na";
 
-  // mostrando data
+    tr.innerHTML = `
+      <td>${iterationData.inputUser}</td>
+      <td>${iterationData.inputs}</td>
+      <td>${iterationData.weight}</td>
+      <td><ul class="list-group">${data}</ul></td>
+      <td>${iterationData.response}</td>`;
 
-  const data =
-    iterationData.iteratedWeight
-      .map(
-        (value) => `
-    <li class="list-group-item">${JSON.stringify(value)}</li>
-  `
-      )
-      .join("") || "na";
-
-  tr.innerHTML = `
-    <td>${iterationData.inputUser}</td>
-    <td>${iterationData.inputs}</td>
-    <td>${iterationData.weight}</td>
-    <td><ul class="list-group">${data}</ul></td>
-    <td>${iterationData.response}</td>`;
-
-  dataTable.appendChild(tr);
+    dataTable.appendChild(tr);
+  } else {
+    swal("Mensaje neurona", "La neurona no recibe ese valor! :(", "error");
+  }
 });

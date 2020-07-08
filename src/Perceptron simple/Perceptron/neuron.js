@@ -43,7 +43,7 @@ function soma(neuronInputs, synapticWeights) {
 }
 
 function activationFunc(somaResult) {
-  if (somaResult > 0) return 1;
+  if (somaResult >= 0) return 1;
   if (somaResult < 0) return -1;
   return 0;
 }

@@ -3,8 +3,8 @@ import Neuron from "./neuron.js";
 
 function startIterations(input, expectedResult) {
   // rango pesos sinápticos
-  const max = 5;
-  const min = -5;
+  const max = 10;
+  const min = -10;
   // entradas
   const neuronInputs = input
     .split(" ")
@@ -13,6 +13,7 @@ function startIterations(input, expectedResult) {
   const synapticWeights = neuronInputs.map(() =>
     Math.round(Math.random() * (max - min) + min)
   );
+  const synapticWeightsHardCoded = [-100, -100, -100, -100]
 
   // inicio iteraciones en la neurona:
   console.log("Frase: ", input);
