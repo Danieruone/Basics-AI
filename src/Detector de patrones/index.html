@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="src/numbers.min.js"></script>
     <script type="module" src="./main.js"></script>
+
     <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
@@ -11,9 +13,10 @@
         <input type="input" id="dimension" placeholder="ingrese la dimension de la matriz"/>
         <input type="input" id="n-ptn" placeholder="ingrese el numero de patrones"/>
         <input type="button" id="generate" value="Generar"/>
-
         <div class="block" id="container-ptn"></div>
+        <div class="block" id="container-input"></div>
+        <input type="button" id="train" value="Entrenar"/>
+        <input type="button" id="run" value="Ejecutar"/>
     </div>
-
 </body>
 </html>

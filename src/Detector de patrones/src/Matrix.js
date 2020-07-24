@@ -4,8 +4,8 @@ export default class Matrix {
         this.table = document.createElement('table')
         this.table.classList.add('table')
         this.pattern = this.fillArray(this.size);
-        const tds = this.createTds();
-        this.createTrs(tds);
+        this.tds = this.createTds();
+        this.createTrs(this.tds);
         console.log('pattern initialization ', this.pattern);
     }
 
@@ -66,4 +66,23 @@ export default class Matrix {
             console.log('pattern updated', this.pattern);
         })
     }
+
+    updateTds(patterArr) {
+        console.log(this.tds);
+        console.log(patterArr);
+        this.tds.forEach((td, i) => {
+            const value = patterArr[i];
+            if (value === 1) {
+                td.classList.add("selected")
+                td.innerHTML = 1;
+                td.data.value = 1;
+            } else {
+                td.classList.remove("selected")
+                td.innerHTML = -1;
+                td.data.value = -1;
+            }
+        })
+    }
+
+
 }

@@ -4,11 +4,12 @@ function hebbAlgorithm(
   neuronInputs,
   learningRatio
 ) {
+
   const deltaArray = deltaFunc(learningRatio, neuronResult, neuronInputs);
   return nextSynapticWeightsFunc(deltaArray, synapticWeights);
 }
 
-// Awnj(t) = n yn(t) * xj (t)
+// Awnj(t) = n * yn(t) * xj (t)
 function deltaFunc(learningRatio, neuronResult, neuronInputs) {
   return neuronInputs.map((value) => learningRatio * neuronResult * value);
 }

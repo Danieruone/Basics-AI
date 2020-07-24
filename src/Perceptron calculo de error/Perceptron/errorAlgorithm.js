@@ -10,7 +10,7 @@ function errorAlgorithm(
   return nextSynapticWeightsFunc(deltaArray, synapticWeights);
 }
 
-// Awnj(t) = nen(t) * j(t)
+// Awnj(t) = n * en(t) * j(t)
 function deltaFunc(errorRange, neuronInputs) {
   const learningRatio = 1;
   return neuronInputs.map((value) => learningRatio * errorRange * value);

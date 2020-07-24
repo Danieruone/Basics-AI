@@ -26,6 +26,7 @@ function Neuron(neuronInputs, synapticWeights, expectedResult, learningRatio) {
     iterationsData.array = [];
     return auxIterationsData;
   }
+
   const nextSynapticWeights = hebbAlgorithm(
     neuronResult,
     synapticWeights,

@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Danieruone/Automata#readme",
   "dependencies": {
-    "jest": "^25.3.0"
+    "@matajm/matrix-js": "^1.0.0",
+    "jest": "^25.3.0",
+    "linear-algebra": "^3.1.4",
+    "matrix-js": "^1.4.0"
   }
 }
