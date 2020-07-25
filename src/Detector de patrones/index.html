@@ -2,21 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Detector de patrones</title>
     <script src="src/numbers.min.js"></script>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./src/App.js"></script>
 
     <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
-        <input type="input" id="dimension" placeholder="ingrese la dimension de la matriz"/>
-        <input type="input" id="n-ptn" placeholder="ingrese el numero de patrones"/>
-        <input type="button" id="generate" value="Generar"/>
-        <div class="block" id="container-ptn"></div>
-        <div class="block" id="container-input"></div>
-        <input type="button" id="train" value="Entrenar"/>
-        <input type="button" id="run" value="Ejecutar"/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="size">Seleccione el tamaño el tamaño de la matriz.</label><br>
+                    <select class="form-control" id="size">
+                        <option selected>Seleccione una opcion</option>
+                    </select>
+                    <br><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="patterns-quantity">Seleccione la cantidad de patrones</label><br>
+                    <select id="patterns-quantity" class="form-control">
+                        <option selected>Seleccione una opcion</option>
+                    </select>
+                </div>
+                <br>
+            </div>
+            <input type="button" id="generate-matrices" class="btn btn-success" value="Generar matrices"/>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <h2>Patrones a memorizar</h2>
+                    <div class="block" id="patterns-container"></div>
+                </div>
+
+                <div>
+                    <h2>Patron defectuoso</h2>
+                    <div class="block" id="input-container"></div>
+                </div>
+
+                <input type="button" id="train" value="Entrenar"/>
+                <input type="button" id="run" value="Ejecutar"/>
+            </div>
+        </div>
     </div>
+
+
+    <script>
+        const sizeSelect = document.getElementById('size');
+        const quantitySelect = document.getElementById('patterns-quantity');
+
+        function generateOptions(element, len, i = 1) {
+            if (i > len) return;
+            const option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            element.appendChild(option);
+            generateOptions(element, len, i + 1)
+        }
+
+        generateOptions(sizeSelect, 10)
+        generateOptions(quantitySelect, 3);
+    </script>
 </body>
 </html>

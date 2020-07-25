@@ -69,7 +69,6 @@ export default class Matrix {
 
     updateTds(patterArr) {
         console.log(this.tds);
-        console.log(patterArr);
         this.tds.forEach((td, i) => {
             const value = patterArr[i];
             if (value === 1) {
