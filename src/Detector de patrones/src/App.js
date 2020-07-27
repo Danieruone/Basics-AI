@@ -40,15 +40,17 @@ export class App {
     }
 
     generateMatricesListener() {
+        // selectors
         const size$ = document.getElementById('size')
         const quantity$ = document.getElementById('patterns-quantity')
 
+        // matrices containers
         const patternsContainer$ = document.getElementById('patterns-container')
         const inputContainer$ = document.getElementById('input-container')
 
-        const btn$ = document.getElementById('generate-matrices')
+        const btn = document.getElementById('generate-matrices')
 
-        btn$.addEventListener('click', () => {
+        btn.addEventListener('click', () => {
             patternsContainer$.innerHTML = ''
             inputContainer$.innerHTML = ''
 
@@ -65,8 +67,7 @@ export class App {
 
         btn.addEventListener('click', () => {
             const transposedMatrices = this.memoryMatrices.map(pattern => {
-                return pattern.getPattern()
-                    .map(i => pattern.getPattern().map(j => i * j))
+                return pattern.getPattern().map(i => pattern.getPattern().map(j => i * j))
             })
 
             this.weights = numbers.matrix.addition(...transposedMatrices)
@@ -84,8 +85,6 @@ export class App {
             const result = this.evolvePattern()
             console.warn('SUCCESS', result);
         })
-
-
     }
 }
 new App();

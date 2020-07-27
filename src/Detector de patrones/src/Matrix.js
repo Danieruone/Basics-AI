@@ -82,6 +82,4 @@ export default class Matrix {
             }
         })
     }
-
-
 }
