@@ -3,6 +3,7 @@ export default class Matrix {
         this.size = size;
         this.table = document.createElement('table')
         this.table.classList.add('table')
+        this.table.classList.add('table-bordered')
         this.pattern = this.fillArray(this.size);
         this.tds = this.createTds();
         this.createTrs(this.tds);

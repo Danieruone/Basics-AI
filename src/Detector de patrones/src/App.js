@@ -1,90 +1,99 @@
-import MatrixDom from './Matrix.js'
+import MatrixDom from "./Matrix.js";
 
 export class App {
-    constructor() {
-        this.weights = []
-        this.memoryMatrices = []
-        this.inputMatrix = null
-        this.generateMatricesListener();
-        this.trainListener();
-        this.runListener();
+  constructor() {
+    this.weights = [];
+    this.memoryMatrices = [];
+    this.inputMatrix = null;
+    this.generateMatricesListener();
+    this.trainListener();
+    this.runListener();
+  }
+
+  createMatrices(size, quantity, container, i = 0, arr = []) {
+    if (i === quantity) return arr.length > 1 ? arr : arr[0];
+    const matrix = new MatrixDom(size);
+    container.appendChild(matrix.getTable());
+    arr.push(matrix);
+    return this.createMatrices(size, quantity, container, i + 1, arr);
+  }
+
+  evolvePattern(i = 0, arr = []) {
+    if (i === 1000) {
+      return arr;
     }
 
-    createMatrices(size, quantity, container, i = 0, arr = []) {
-        if (i === quantity) return arr.length > 1 ? arr : arr[0];
-        const matrix = new MatrixDom(size)
-        container.appendChild(matrix.getTable())
-        arr.push(matrix);
-        return this.createMatrices(size, quantity, container, i + 1, arr)
-    }
+    const coefficient = this.inputMatrix.getPattern().map((v) => [v]);
+    const product = numbers.matrix.multiply(this.weights, coefficient).flat();
+    const patternEvolved = product.map((v) => (v >= 0 ? 1 : -1));
+    this.refreshInputMatrix(patternEvolved);
 
-    evolvePattern(i = 0, arr = []) {
-        if (i === 1000) {
-            return arr;
-        }
+    console.log("==============================");
+    console.log("Pattern evolved");
+    console.log(patternEvolved);
 
-        const coefficient = this.inputMatrix.getPattern().map(v => [v])
-        const product = numbers.matrix.multiply(this.weights, coefficient).flat();
-        const patternEvolved = product.map(v => v >= 0 ? 1 : -1)
-        this.refreshInputMatrix(patternEvolved);
+    return this.evolvePattern(i + 1, patternEvolved);
+  }
 
-        console.log('==============================')
-        console.log('Pattern evolved');
-        console.log(patternEvolved);
+  refreshInputMatrix(pattern) {
+    this.inputMatrix.updateTds(pattern);
+  }
 
-        return this.evolvePattern(i + 1, patternEvolved)
-    }
+  generateMatricesListener() {
+    // selectors
+    const size$ = document.getElementById("size");
+    const quantity$ = document.getElementById("patterns-quantity");
 
-    refreshInputMatrix(pattern) {
-        this.inputMatrix.updateTds(pattern)
-    }
+    // matrices containers
+    const patternsContainer$ = document.getElementById("patterns-container");
+    const inputContainer$ = document.getElementById("input-container");
 
-    generateMatricesListener() {
-        // selectors
-        const size$ = document.getElementById('size')
-        const quantity$ = document.getElementById('patterns-quantity')
+    const btn = document.getElementById("generate-matrices");
 
-        // matrices containers
-        const patternsContainer$ = document.getElementById('patterns-container')
-        const inputContainer$ = document.getElementById('input-container')
+    btn.addEventListener("click", () => {
+      patternsContainer$.innerHTML = "";
+      inputContainer$.innerHTML = "";
 
-        const btn = document.getElementById('generate-matrices')
+      const size = Math.pow(+size$.value, 2);
+      const quantity = +quantity$.value;
 
-        btn.addEventListener('click', () => {
-            patternsContainer$.innerHTML = ''
-            inputContainer$.innerHTML = ''
+      this.memoryMatrices = this.createMatrices(
+        size,
+        quantity,
+        patternsContainer$
+      );
+      this.inputMatrix = this.createMatrices(size, 1, inputContainer$);
+    });
+  }
 
-            const size = Math.pow(+size$.value, 2);
-            const quantity = +quantity$.value;
+  trainListener() {
+    const btn = document.getElementById("train");
 
-            this.memoryMatrices = this.createMatrices(size, quantity, patternsContainer$);
-            this.inputMatrix = this.createMatrices(size, 1, inputContainer$)
-        })
-    }
+    btn.addEventListener("click", () => {
+      const transposedMatrices = this.memoryMatrices.map((pattern) => {
+        return pattern
+          .getPattern()
+          .map((i) => pattern.getPattern().map((j) => i * j));
+      });
 
-    trainListener() {
-        const btn = document.getElementById('train')
+      this.weights = numbers.matrix
+        .addition(...transposedMatrices)
+        .map((x, i) => x.map((y, j) => (i === j ? 0 : y)));
 
-        btn.addEventListener('click', () => {
-            const transposedMatrices = this.memoryMatrices.map(pattern => {
-                return pattern.getPattern().map(i => pattern.getPattern().map(j => i * j))
-            })
+      console.log("weights: ", this.weights);
+      swal("Estado de la red: ", "Entrenada!", "success");
+    });
+  }
 
-            this.weights = numbers.matrix.addition(...transposedMatrices)
-                .map((x, i) => x.map((y, j) => i === j ? 0 : y))
+  runListener() {
+    const btn = document.getElementById("run");
+    const loader = document.getElementById("loader");
 
-            console.log('weights: ', this.weights)
-        })
-
-    }
-
-    runListener() {
-        const btn = document.getElementById('run')
-
-        btn.addEventListener('click', () => {
-            const result = this.evolvePattern()
-            console.warn('SUCCESS', result);
-        })
-    }
+    btn.addEventListener("click", () => {
+      const result = this.evolvePattern();
+      swal("Estado red: ", "Patrón encontrado.", "success");
+      console.warn("SUCCESS", result);
+    });
+  }
 }
 new App();

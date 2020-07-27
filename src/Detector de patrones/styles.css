@@ -9,7 +9,7 @@ div {
 }
 
 td {
-    width: 20px;
+    justify-content: start;
 }
 
 td:hover {
@@ -27,7 +27,7 @@ td:hover {
 }
 
 .block {
-    display: block;
+    display: flex;
 }
 
 .table {
